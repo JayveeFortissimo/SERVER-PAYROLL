@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { SignUpDTO } from 'interfaces/signup.interfaces.dto';
 import * as bcrypt from 'bcrypt';
-import {JwtService} from '@nestjs/jwt';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
@@ -17,9 +17,8 @@ export class AuthService {
 
   async signUp(body: SignUpDTO, response) {
     try {
-      const { password, email, username, position, salary } = body;
+      const { password, email, username, position} = body;
 
-      const salary1 = salary ?? 0;
 
       const AllDatas = await this.prismaClient.userAuth.findMany();
 
@@ -34,9 +33,8 @@ export class AuthService {
         data: {
           username,
           email,
-          password:hashedPasswords,
+          password: hashedPasswords,
           position,
-          salary: salary1
         },
       });
 
