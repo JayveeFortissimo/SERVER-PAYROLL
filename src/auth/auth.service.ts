@@ -17,9 +17,8 @@ export class AuthService {
 
   async signUp(body: SignUpDTO, response) {
     try {
-      const { password, email, username, position, salary } = body;
+      const { password, email, username, position } = body;
 
-      const salary1 = salary ?? 0;
 
       const AllDatas = await this.prismaClient.userAuth.findMany();
 
@@ -36,7 +35,6 @@ export class AuthService {
           email,
           password:hashedPasswords,
           position,
-          salary: salary1
         },
       });
 

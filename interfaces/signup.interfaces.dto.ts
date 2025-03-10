@@ -18,6 +18,4 @@ export class SignUpDTO {
   @IsEnum(Position)
   position: Position
 
-  @IsNumber()
-  salary: number;
 }
